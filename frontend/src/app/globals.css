@@ -1,0 +1,21 @@
+/* Import Tailwind's base styles (resets & defaults) */
+@tailwind base;
+
+/* Import Tailwind component classes */
+@tailwind components;
+
+/* Import Tailwind utility classes */
+@tailwind utilities;
+
+/* Global styles applied to the entire application */
+body {
+  /* System-based clean font stack */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Soft gradient background for the whole app */
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+
+  /* Default text color */
+  color: #1f2937;
+}
