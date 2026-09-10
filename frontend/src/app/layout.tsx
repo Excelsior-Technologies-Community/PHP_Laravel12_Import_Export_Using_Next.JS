@@ -1,15 +1,19 @@
-// Import global Tailwind & custom CSS
+import type { Metadata } from "next";
 import "./globals.css";
 
-// Root layout component (wraps entire app)
+export const metadata: Metadata = {
+  title: "Import / Export Studio",
+  description:
+    "Laravel and Next.js Import Export Management Dashboard",
+};
+
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode; // React children type
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      {/* Render all pages here */}
       <body>{children}</body>
     </html>
   );
