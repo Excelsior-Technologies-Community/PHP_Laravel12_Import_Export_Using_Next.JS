@@ -2,16 +2,22 @@
 
 namespace App\Models;
 
-// Enables factory support for testing / seeding
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-// Base Eloquent model
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-    // Fields allowed for mass assignment
-    protected $fillable = ['title', 'body'];
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
+    ];
 }
