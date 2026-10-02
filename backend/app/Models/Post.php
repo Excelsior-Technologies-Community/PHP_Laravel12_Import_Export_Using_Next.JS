@@ -13,9 +13,13 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
+        'category',
+        'price',
+        'status',
     ];
 
     protected $casts = [
+        'price' => 'decimal:2',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',

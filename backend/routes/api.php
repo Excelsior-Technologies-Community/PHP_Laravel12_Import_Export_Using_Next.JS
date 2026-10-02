@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\ImportExportStudioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,21 @@ Route::get(
 
 /*
 |--------------------------------------------------------------------------
-| Import / Export
+| Advanced Import / Export Studio
+|--------------------------------------------------------------------------
+*/
+
+Route::post('import-studio/upload', [ImportExportStudioController::class, 'upload']);
+Route::post('import-studio/apply-mapping', [ImportExportStudioController::class, 'applyMapping']);
+Route::post('import-studio/repair-row', [ImportExportStudioController::class, 'repairRow']);
+Route::post('import-studio/skip-row', [ImportExportStudioController::class, 'skipRow']);
+Route::post('import-studio/execute', [ImportExportStudioController::class, 'execute']);
+Route::get('import-studio/status/{batchId}', [ImportExportStudioController::class, 'statusStream']);
+Route::get('export-studio/custom', [ImportExportStudioController::class, 'customExport']);
+
+/*
+|--------------------------------------------------------------------------
+| Import / Export Standard
 |--------------------------------------------------------------------------
 */
 

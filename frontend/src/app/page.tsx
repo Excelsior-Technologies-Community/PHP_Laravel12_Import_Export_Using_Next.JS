@@ -10,6 +10,8 @@ import {
 } from "react";
 
 import api from "@/services/api";
+import ImportStudioModal from "@/components/ImportStudioModal";
+import ExportStudioModal from "@/components/ExportStudioModal";
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +116,9 @@ const formatDate = (date?: string) => {
 export default function Home() {
   const fileInputRef =
     useRef<HTMLInputElement | null>(null);
+
+  const [isImportStudioOpen, setIsImportStudioOpen] = useState(false);
+  const [isExportStudioOpen, setIsExportStudioOpen] = useState(false);
 
   /*
   |--------------------------------------------------------------------------
@@ -1188,6 +1193,19 @@ export default function Home() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
+                <button
+                  onClick={() => setIsImportStudioOpen(true)}
+                  className="rounded-xl bg-indigo-600 hover:bg-indigo-700 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5"
+                >
+                  📊 Drag & Drop Import Studio
+                </button>
+
+                <button
+                  onClick={() => setIsExportStudioOpen(true)}
+                  className="rounded-xl bg-purple-600 hover:bg-purple-700 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5"
+                >
+                  📈 Custom Export Studio
+                </button>
 
                 <button
                   onClick={() => {
@@ -1223,7 +1241,6 @@ export default function Home() {
                 >
                   🗑️ Trash ({stats.trash_posts})
                 </button>
-
               </div>
 
             </div>
@@ -2406,6 +2423,22 @@ export default function Home() {
 
         </div>
       )}
+
+      {/* STUDIO MODALS */}
+      <ImportStudioModal
+        isOpen={isImportStudioOpen}
+        onClose={() => setIsImportStudioOpen(false)}
+        onSuccess={() => {
+          fetchPosts(1);
+          fetchStats();
+          fetchHistory(1);
+        }}
+      />
+
+      <ExportStudioModal
+        isOpen={isExportStudioOpen}
+        onClose={() => setIsExportStudioOpen(false)}
+      />
 
     </main>
   );
